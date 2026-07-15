@@ -1,11 +1,5 @@
-from app.services.knowledge_service import KnowledgeService
+from app.services.activity_service import ActivityService
 
-service = KnowledgeService()
+service = ActivityService()
 
-print(service.find("wa"))
-
-print(service.find("yt"))
-
-print(service.find("code"))
-
-print(service.find("github"))
+print(service.find("coding"))

@@ -18,8 +18,8 @@
     },
 
     "spotify": {
-        "type": "app",
-        "path": "C:/Users/adik/AppData/Roaming/Spotify/Spotify.exe",
+        "type": "website",
+        "url": "https://open.spotify.com/intl-id/",
         "aliases": [
             "spotify"
         ]

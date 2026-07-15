@@ -1,0 +1,28 @@
+{
+    "coding": {
+        "description": "Workspace untuk coding",
+
+        "targets": [
+
+            "vscode",
+
+            "github",
+
+            "chatgpt"
+        ]
+    },
+
+    "kuliah": {
+
+        "description": "Workspace kuliah",
+
+        "targets": [
+
+            "whatsapp",
+
+            "google",
+
+            "chatgpt"
+        ]
+    }
+}

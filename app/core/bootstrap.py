@@ -10,5 +10,6 @@ def create_registry():
 
     registry.register("ping", PingCommand())
     registry.register("buka", OpenAppCommand())
+    registry.register("bukain", OpenAppCommand())
 
     return registry
