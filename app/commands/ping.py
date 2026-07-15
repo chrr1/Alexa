@@ -1,8 +1,8 @@
 from app.core.command import Command
+from app.core.context import CommandContext
 
 
 class PingCommand(Command):
 
-    def execute(self, text: str):
-
-        return "Pong! Alexa siap membantu."
+    def execute(self, context: CommandContext) -> str:
+        return "Pong! Alexa di sinii."
