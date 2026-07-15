@@ -10,6 +10,5 @@ def create_registry():
 
     registry.register("ping", PingCommand())
     registry.register("buka", OpenAppCommand())
-    registry.register("website", OpenWebsiteCommand())
 
     return registry

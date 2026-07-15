@@ -1,24 +1,21 @@
 from app.core.command import Command
 from app.core.context import CommandContext
-from app.services.app_service import AppService
+from app.services.launcher_service import LauncherService
 
 
 class OpenAppCommand(Command):
 
     def __init__(self):
+        self.launcher = LauncherService()
 
-        self.app_service = AppService()
-
-    def execute(self, context: CommandContext) -> str:
+    def execute(self, context: CommandContext):
 
         if not context.arguments:
-            return "Masukkan nama aplikasi."
+            return "Masukkan target yang ingin dibuka."
 
-        app_name = context.arguments[0]
+        target = " ".join(context.arguments)
 
-        success = self.app_service.open(app_name)
+        if self.launcher.open(target):
+            return f"Membuka {target}..."
 
-        if success:
-            return f"Membuka {app_name}..."
-
-        return f"Aplikasi '{app_name}' tidak ditemukan."
+        return f"'{target}' tidak ditemukan."

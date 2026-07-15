@@ -1,0 +1,64 @@
+{
+    "vscode": {
+        "type": "app",
+        "path": "C:/Users/adik/AppData/Local/Programs/Microsoft VS Code/Code.exe",
+        "aliases": [
+            "vscode",
+            "code",
+            "visual studio code"
+        ]
+    },
+
+    "xampp": {
+        "type": "app",
+        "path": "C:/xampp/xampp-control.exe",
+        "aliases": [
+            "xampp"
+        ]
+    },
+
+    "spotify": {
+        "type": "app",
+        "path": "C:/Users/adik/AppData/Roaming/Spotify/Spotify.exe",
+        "aliases": [
+            "spotify"
+        ]
+    },
+
+    "github": {
+        "type": "website",
+        "url": "https://github.com",
+        "aliases": [
+            "github",
+            "gh"
+        ]
+    },
+
+    "youtube": {
+        "type": "website",
+        "url": "https://youtube.com",
+        "aliases": [
+            "youtube",
+            "yt"
+        ]
+    },
+
+    "chatgpt": {
+        "type": "website",
+        "url": "https://chatgpt.com",
+        "aliases": [
+            "chatgpt",
+            "gpt"
+        ]
+    },
+
+    "whatsapp": {
+        "type": "website",
+        "url": "https://web.whatsapp.com",
+        "aliases": [
+            "whatsapp",
+            "wa",
+            "whatsapp web"
+        ]
+    }
+}
