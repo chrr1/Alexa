@@ -1,5 +1,9 @@
-from app.services.activity_service import ActivityService
+from app.audio.recorder import Recorder
 
-service = ActivityService()
+recorder = Recorder()
 
-print(service.find("coding"))
+recorder.record(3)
+
+audio = recorder.buffer.get()
+
+print(audio.shape)

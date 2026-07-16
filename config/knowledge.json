@@ -9,6 +9,15 @@
         ]
     },
 
+     "postman": {
+        "type": "app",
+        "path": "C:/Users/adik/AppData/Local/Postman/Postman.exe",
+        "aliases": [
+            "postman"
+            
+        ]
+    },
+
     "xampp": {
         "type": "app",
         "path": "C:/xampp/xampp-control.exe",
@@ -19,7 +28,7 @@
 
     "spotify": {
         "type": "website",
-        "url": "https://open.spotify.com/intl-id/",
+        "url": "https://open.spotify.com/intl-id/?utm_source=pwa_install",
         "aliases": [
             "spotify"
         ]

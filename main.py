@@ -1,15 +1,35 @@
 from app.core.assistant import Assistant
 from app.core.bootstrap import create_registry
 from app.core.router import CommandRouter
+from app.runtime.alexa_runtime import AlexaRuntime
+
+import sys
+
+
+def create_assistant():
+
+    registry = create_registry()
+    router = CommandRouter(registry)
+
+    return Assistant(router)
 
 
 def main():
 
-    registry = create_registry()
+    assistant = create_assistant()
 
-    router = CommandRouter(registry)
+    if len(sys.argv) > 1:
 
-    assistant = Assistant(router)
+        mode = sys.argv[1].lower()
+
+        if mode == "service":
+
+            runtime = AlexaRuntime(assistant)
+            runtime.start()
+            return
+
+    print("Alexa Terminal Mode")
+    print("Ketik 'exit' untuk keluar.\n")
 
     while True:
 
