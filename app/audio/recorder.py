@@ -1,7 +1,5 @@
 import sounddevice as sd
 
-from app.audio.audio_buffer import AudioBuffer
-
 
 class Recorder:
 
@@ -10,23 +8,17 @@ class Recorder:
         self.sample_rate = 16000
         self.channels = 1
 
-        self.buffer = AudioBuffer()
+    def record(self, seconds=0.5):
 
-    def record(self, seconds=5):
-
-        print(f"Mendengarkan {seconds} detik...")
+        frames = int(seconds * self.sample_rate)
 
         audio = sd.rec(
-            int(seconds * self.sample_rate),
+            frames,
             samplerate=self.sample_rate,
             channels=self.channels,
             dtype="float32"
         )
 
         sd.wait()
-
-        self.buffer.set(audio)
-
-        print("Audio masuk ke buffer.")
 
         return audio

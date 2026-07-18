@@ -1,0 +1,8 @@
+// GTA V SCRIPT HOOK (build Jul 15 2026, v3889.0/1158.13)
+//          (C) Alexander Blade 2015-2026
+[23:58:28] INIT: Started
+[23:58:28] INIT: Success, game version is VER_1_0_2372_0_NOSTEAM
+[23:58:28] INIT: Registering script 'Menyoo.asi' (0x00007FFEDEEA8290)
+[23:58:28] INIT: Registering additional script thread 'Menyoo.asi' (0x00007FFEDEEB8D70)
+[23:58:28] INIT: Registering script 'NativeTrainer.asi' (0x00007FFF5AC4A3C0)
+[23:58:28] INIT: Registering script 'ScriptHookVDotNet.asi' (0x00007FFF5DB31480)

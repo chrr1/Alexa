@@ -9,6 +9,22 @@
         ]
     },
 
+    "gta": {
+        "type": "app",
+        "path": "C:/_GAMES/Grand Theft Auto V/PlayGTAV.exe",
+        "aliases": [
+            "gta"
+        ]
+    },
+
+    "dispatch": {
+        "type": "app",
+        "path": "C:/_GAMES/Dispatch/Dispatch.exe",
+        "aliases": [
+            "dispatch"
+        ]
+    },
+
      "postman": {
         "type": "app",
         "path": "C:/Users/adik/AppData/Local/Postman/Postman.exe",

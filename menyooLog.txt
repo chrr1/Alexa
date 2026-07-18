@@ -1,0 +1,8 @@
+Menyoo 2.3.1
+Gameversion 70
+Log file created 16/07/2026
+[23:58:28] INFO - Logging level 2 active. Edit loglevel in menyooconfig.ini to change.
+[23:58:28] INFO - Config loaded from C:\_GAMES\Grand Theft Auto V\menyooStuff\menyooConfig.ini.
+[23:58:28] INFO - MODULEINFO: lpBaseofDll=00007FF728940000, SizeOfImage=76046336, EntryPoint=00007FF72A1092B0
+[23:58:28] INFO - Found InitVehicleArchetype at 140699520890094
+[23:58:28] INIT - GTAMemory Init Done
