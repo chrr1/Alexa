@@ -1,28 +1,29 @@
 from app.voice.recorder import Recorder
 from app.voice.speech_to_text import SpeechToText
+from app.voice.normalizer import Normalizer
 
 print("Memuat Whisper...")
 
 stt = SpeechToText()
-
-print("Whisper siap.")
-
+normalizer = Normalizer()
 recorder = Recorder()
 
-print("Mulai merekam 5 detik...")
+print("Alexa siap.\n")
 
-filename = recorder.record_and_save(
-    "test.wav",
-    seconds=5
-)
+while True:
 
-print("Rekaman selesai.")
+    input("Tekan ENTER untuk mulai berbicara...")
 
-print("Mengubah suara menjadi teks...")
+    filename = recorder.record_and_save(
+        "voice.wav",
+        seconds=5
+    )
 
-text = stt.transcribe(filename)
+    text = stt.transcribe(filename)
 
-print()
-print("========== HASIL ==========")
-print(text)
-print("===========================")
+    print("\nWhisper :", text)
+
+    text = normalizer.normalize(text)
+
+    print("Normal :", text)
+    print("-" * 40)
