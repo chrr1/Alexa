@@ -1,14 +1,14 @@
 from PySide6.QtCore import Qt, Signal
-from PySide6.QtGui import QFont
+from PySide6.QtGui import QColor
 from PySide6.QtWidgets import (
     QWidget,
-    QVBoxLayout,
+    QFrame,
     QLabel,
     QLineEdit,
-    QGraphicsDropShadowEffect,
+    QVBoxLayout,
+    QHBoxLayout,
+    QGraphicsDropShadowEffect
 )
-
-from PySide6.QtGui import QColor
 
 
 class AlexaPopup(QWidget):
@@ -22,99 +22,123 @@ class AlexaPopup(QWidget):
         self.assistant = assistant
 
         self.setWindowFlags(
-            Qt.FramelessWindowHint |
-            Qt.WindowStaysOnTopHint
+            Qt.FramelessWindowHint
+            | Qt.WindowStaysOnTopHint
+            | Qt.Tool
         )
 
         self.setAttribute(Qt.WA_TranslucentBackground)
 
-        self.resize(650, 220)
+        self.resize(200, 100)
 
-        self.container = QWidget(self)
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
 
+        self.container = QFrame()
         self.container.setObjectName("container")
-
-        self.container.setGeometry(0, 0, 650, 220)
 
         shadow = QGraphicsDropShadowEffect()
 
-        shadow.setBlurRadius(40)
-
-        shadow.setOffset(0, 12)
-
-        shadow.setColor(QColor(0, 0, 0, 120))
+        shadow.setBlurRadius(35)
+        shadow.setOffset(0, 10)
+        shadow.setColor(QColor(0, 0, 0, 160))
 
         self.container.setGraphicsEffect(shadow)
 
-        layout = QVBoxLayout()
+        root.addWidget(self.container)
 
-        layout.setContentsMargins(35, 30, 35, 30)
+        layout = QVBoxLayout(self.container)
 
-        layout.setSpacing(18)
+        layout.setContentsMargins(18, 14, 18, 14)
+        layout.setSpacing(10)
 
-        title = QLabel("🤖 Alexa")
+        # ================= HEADER =================
 
-        title.setFont(QFont("Segoe UI", 20, QFont.Bold))
+        header = QHBoxLayout()
 
-        title.setAlignment(Qt.AlignCenter)
+        self.title = QLabel("Alexa")
+        self.title.setObjectName("title")
 
-        subtitle = QLabel("Apa yang bisa saya bantu hari ini?")
+        header.addWidget(self.title)
 
-        subtitle.setAlignment(Qt.AlignCenter)
+        header.addStretch()
 
-        subtitle.setFont(QFont("Segoe UI", 10))
+        self.status = QLabel("● ONLINE")
+        self.status.setObjectName("status")
+
+        header.addWidget(self.status)
+
+        layout.addLayout(header)
+
+        # ================= INPUT =================
 
         self.input = QLineEdit()
 
-        self.input.setPlaceholderText("Cari aplikasi, website, atau ketik perintah...")
+        self.input.setPlaceholderText("Apa yang bisa saya bantu?")
 
         self.input.returnPressed.connect(self.execute)
 
-        self.input.setMinimumHeight(48)
-
-        self.input.setFont(QFont("Segoe UI", 11))
-
-        layout.addWidget(title)
-
-        layout.addWidget(subtitle)
-
         layout.addWidget(self.input)
-
-        self.container.setLayout(layout)
 
         self.setStyleSheet("""
 
         #container{
 
-            background:#202123;
+            background:#1F2025;
 
-            border-radius:20px;
+            border:1px solid #32353D;
+
+            border-radius:18px;
 
         }
 
-        QLabel{
+        QLabel#title{
 
             color:white;
+
+            font-size:15px;
+
+            font-weight:700;
+
+            font-family:"Segoe UI Variable";
+
+        }
+
+        QLabel#status{
+
+            color:#57E389;
+
+            font-size:10px;
+
+            font-weight:bold;
+
+            font-family:"Segoe UI Variable";
 
         }
 
         QLineEdit{
 
-            background:#2B2D31;
+            background:#2A2D35;
+
+            border:1px solid #3D4149;
+
+            border-radius:10px;
 
             color:white;
 
-            border:none;
+            padding:10px 12px;
 
-            border-radius:12px;
+            font-size:13px;
 
-            padding:12px;
+            font-family:"Segoe UI Variable";
+
+            selection-background-color:#4F8DFF;
 
         }
 
         QLineEdit:focus{
 
-            border:2px solid #4F8CFF;
+            border:1px solid #4F8DFF;
 
         }
 
@@ -128,7 +152,7 @@ class AlexaPopup(QWidget):
 
         x = screen.center().x() - self.width() // 2
 
-        y = screen.height() // 4
+        y = 150
 
         self.move(x, y)
 
@@ -150,7 +174,9 @@ class AlexaPopup(QWidget):
 
         if command:
 
-            print(self.assistant.process(command))
+            result = self.assistant.process(command)
+
+            print(result)
 
         self.input.clear()
 
