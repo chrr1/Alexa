@@ -21,6 +21,8 @@ class AlexaPopup(QWidget):
 
         self.assistant = assistant
 
+        self.margin = 24
+
         self.setWindowFlags(
             Qt.FramelessWindowHint
             | Qt.WindowStaysOnTopHint
@@ -38,7 +40,6 @@ class AlexaPopup(QWidget):
         self.container.setObjectName("container")
 
         shadow = QGraphicsDropShadowEffect()
-
         shadow.setBlurRadius(35)
         shadow.setOffset(0, 10)
         shadow.setColor(QColor(0, 0, 0, 160))
@@ -81,84 +82,94 @@ class AlexaPopup(QWidget):
         layout.addWidget(self.input)
 
         self.setStyleSheet("""
+#container{
 
-        #container{
+    background:#171717;
 
-            background:#1F2025;
+    border:1px solid #2A2A2A;
 
-            border:1px solid #32353D;
+    border-radius:18px;
 
-            border-radius:18px;
+}
 
-        }
+QLabel#title{
 
-        QLabel#title{
+    color:#FFFFFF;
 
-            color:white;
+    font-size:15px;
 
-            font-size:15px;
+    font-weight:700;
 
-            font-weight:700;
+    font-family:"Segoe UI Variable";
 
-            font-family:"Segoe UI Variable";
+}
 
-        }
+QLabel#status{
 
-        QLabel#status{
+    color:#57E389;
 
-            color:#57E389;
+    font-size:10px;
 
-            font-size:10px;
+    font-weight:700;
 
-            font-weight:bold;
+    font-family:"Segoe UI Variable";
 
-            font-family:"Segoe UI Variable";
+}
 
-        }
+QLineEdit{
 
-        QLineEdit{
+    background:#111111;
 
-            background:#2A2D35;
+    border:1px solid #303030;
 
-            border:1px solid #3D4149;
+    border-radius:10px;
 
-            border-radius:10px;
+    color:#FFFFFF;
 
-            color:white;
+    padding:10px 12px;
 
-            padding:10px 12px;
+    font-size:13px;
 
-            font-size:13px;
+    font-family:"Segoe UI Variable";
 
-            font-family:"Segoe UI Variable";
+    selection-background-color:#FFFFFF;
 
-            selection-background-color:#4F8DFF;
+    selection-color:#000000;
 
-        }
+}
 
-        QLineEdit:focus{
+QLineEdit::placeholder{
 
-            border:1px solid #4F8DFF;
+    color:#8A8A8A;
 
-        }
+}
 
-        """)
+QLineEdit:focus{
+
+    border:1px solid #FFFFFF;
+
+}
+""")
 
         self.show_requested.connect(self.open)
 
-    def center(self):
+    # ================= POSISI =================
+
+    def position(self):
 
         screen = self.screen().availableGeometry()
 
-        x = screen.center().x() - self.width() // 2
+        x = screen.left() + self.margin
 
-        y = 150
+        y = screen.top() + self.margin
 
         self.move(x, y)
 
+    # ================= OPEN =================
+
     def open(self):
 
-        self.center()
+        self.position()
 
         self.show()
 
@@ -167,6 +178,10 @@ class AlexaPopup(QWidget):
         self.activateWindow()
 
         self.input.setFocus()
+
+        self.input.selectAll()
+
+    # ================= EXECUTE =================
 
     def execute(self):
 
@@ -181,6 +196,8 @@ class AlexaPopup(QWidget):
         self.input.clear()
 
         self.hide()
+
+    # ================= ESC =================
 
     def keyPressEvent(self, event):
 

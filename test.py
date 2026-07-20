@@ -1,29 +1,31 @@
-from app.voice.recorder import Recorder
-from app.voice.speech_to_text import SpeechToText
-from app.voice.normalizer import Normalizer
+from app.music.manager import MusicManager
 
-print("Memuat Whisper...")
+music = MusicManager()
 
-stt = SpeechToText()
-normalizer = Normalizer()
-recorder = Recorder()
+print("Jumlah lagu :", music.library.count())
 
-print("Alexa siap.\n")
+print()
 
-while True:
+print("Sedang di index awal")
 
-    input("Tekan ENTER untuk mulai berbicara...")
+print(music.current())
 
-    filename = recorder.record_and_save(
-        "voice.wav",
-        seconds=5
-    )
+print()
 
-    text = stt.transcribe(filename)
+music.jump("heaven")
 
-    print("\nWhisper :", text)
+print("Setelah jump")
 
-    text = normalizer.normalize(text)
+print(music.current())
 
-    print("Normal :", text)
-    print("-" * 40)
+print()
+
+print("Next")
+
+print(music.next())
+
+print()
+
+print("Previous")
+
+print(music.previous())
