@@ -19,20 +19,23 @@ APP_ALIASES = {
         "visual studio",
         "visual studio code",
         "fiscode",
-        "visi kode"
+        "visi kode",
+        "kot"
     ],
 
     "github": [
         "github",
         "git hub",
         "githab",
-        "githup"
+        "githup",
+        "kit"
     ],
 
     "xampp": [
         "xampp",
         "exampp",
-        "eksam"
+        "eksam",
+        "xrmbp"
     ],
 
     "spotify": [
