@@ -7,18 +7,24 @@ from app.ui.popup import AlexaPopup
 from app.core.bootstrap import create_assistant
 
 
-assistant = create_assistant()
+def start():
 
-app = QApplication(sys.argv)
+    assistant = create_assistant()
 
-popup = AlexaPopup(assistant)
+    app = QApplication(sys.argv)
 
-hotkey = GlobalHotkey(
-    popup.show_requested.emit
-)
+    popup = AlexaPopup(assistant)
 
-hotkey.start()
+    hotkey = GlobalHotkey(
+        popup.show_requested.emit
+    )
 
-print("Alexa Launcher aktif")
+    hotkey.start()
 
-sys.exit(app.exec())
+    print("Alexa Launcher aktif")
+
+    sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    start()

@@ -9,9 +9,9 @@ WM_HOTKEY = 0x0312
 
 MOD_ALT = 0x0001
 MOD_CONTROL = 0x0002
-MOD_SHIFT = 0x0004
 
 VK_SPACE = 0x20
+VK_A = 0x41
 
 
 class GlobalHotkey:
@@ -31,19 +31,31 @@ class GlobalHotkey:
 
     def listen(self):
 
-        success = user32.RegisterHotKey(
+        ctrl_space = user32.RegisterHotKey(
             None,
             1,
             MOD_CONTROL,
             VK_SPACE
         )
 
-        if not success:
+        alt_a = user32.RegisterHotKey(
+            None,
+            2,
+            MOD_ALT,
+            VK_A
+        )
 
-            print("Gagal register hotkey")
+        if not ctrl_space:
+            print("Gagal register Ctrl + Space")
+
+        if not alt_a:
+            print("Gagal register Alt + A")
+
+        if not ctrl_space and not alt_a:
             return
 
-        print("Hotkey Ctrl+Space aktif")
+        print("Hotkey Ctrl + Space aktif")
+        print("Hotkey Alt + A aktif")
 
         msg = wintypes.MSG()
 
@@ -56,6 +68,8 @@ class GlobalHotkey:
 
             if msg.message == WM_HOTKEY:
 
-                self.callback()
+                if msg.wParam in (1, 2):
+                    self.callback()
 
         user32.UnregisterHotKey(None, 1)
+        user32.UnregisterHotKey(None, 2)

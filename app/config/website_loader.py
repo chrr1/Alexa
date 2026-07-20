@@ -1,22 +1,25 @@
 import json
-from pathlib import Path
+
+from app.utils.resource import resource_path
 
 
 class WebsiteLoader:
 
     def __init__(self):
 
-        project_root = Path(__file__).resolve().parents[2]
+        file = resource_path(
+            "config",
+            "websites.json"
+        )
 
-        config = project_root / "config" / "websites.json"
-
-        with config.open(
+        with open(
+            file,
             "r",
-            encoding="utf8"
-        ) as file:
+            encoding="utf-8"
+        ) as f:
 
-            self.websites = json.load(file)
+            self.data = json.load(f)
 
-    def get_url(self, name: str):
+    def get_url(self, name):
 
-        return self.websites.get(name.lower())
+        return self.data.get(name)

@@ -34,6 +34,18 @@
         ]
     },
 
+     "file_manager": {
+        "type": "app",
+        "path": "C:/Windows/explorer.exe",
+        "aliases": [
+            "file manager",
+            "file explorer",
+            "explorer",
+            "file",
+            "folder"
+        ]
+    },
+
     "xampp": {
         "type": "app",
         "path": "C:/xampp/xampp-control.exe",
